@@ -1,0 +1,17 @@
+Chapter 4, short notes
+
+1. cuda chip is divided into streaming multiprocessors and each sm has small tiles called cuda cores.
+2. cuda cores in each sm shares same control logic and memory (onchip memory)
+3. There is an off chip memory called "global memory".
+4. blocks may be simultaneously assigned to an SM, this is resource constrained as blocks need hardware resources.
+5. Threads in same block are simultaneously scheduled on sms, this ensures communication amoung threads within same block.
+6. Barrier sync happens using __syncthreads().
+7. If __synthreads() is present, it must be executed by all threads in a block.
+8. All threads in a block need to be assigned to the same SM and that too simultaneously to make sure that there are no deadlocks during barrier sync.
+9. A block can only be executed on sm if it has the required resources which would be needed by all threads.
+10. Blocks can be executed in any order.
+11.Threads within a block can be executed in any order.
+12. When a block is scheduled on sm, a group of threads called warps inside this block is scheduled on gpu.
+13. a group of 32 threads based on threadIdx forms a warp, i.e thread 0 to 31 forms one warp as so on.
+14. The confusion: if threads execution doesn't depend on each other, is it true inside warp as well ? : answered here: https://g.co/gemini/share/05b92de26c67
+15. For a multidimensional block, its first flattened out and then warp are calculated.
