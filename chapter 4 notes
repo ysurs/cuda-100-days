@@ -15,3 +15,11 @@ Chapter 4, short notes
 13. a group of 32 threads based on threadIdx forms a warp, i.e thread 0 to 31 forms one warp as so on.
 14. The confusion: if threads execution doesn't depend on each other, is it true inside warp as well ? : answered here: https://g.co/gemini/share/05b92de26c67
 15. For a multidimensional block, its first flattened out and then warp are calculated.
+16. each sm has cores which are grouped together into processing blocks.
+17. Each processing has instruction fetch and dispatch unit.
+18. All threads in a warp as executed in the same processing block. An instruction is fetched, executed by all threads in a warp at the same time. This is called as single instruction, multiple data or multiple threads.
+
+
+Control divergence
+
+1. 
